@@ -16,3 +16,8 @@ export const registerPokemon = async (poke: CivilizedPokemon) => {
     await Swal.fire("Algo salio mal", "", "error");
   }
 };
+
+export const listPokemons = async():Promise<CivilizedPokemon[]> => {
+  const {data} = await civipokeapi.get("pokemon/all");
+  return data;
+};
