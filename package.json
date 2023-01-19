@@ -1,5 +1,5 @@
 {
-  "name": "test-fullstack-kiki",
+  "name": "test-fullstack-kiki-front",
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
