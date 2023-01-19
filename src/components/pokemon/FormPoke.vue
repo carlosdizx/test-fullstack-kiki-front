@@ -7,14 +7,26 @@
     </template>
 
     <v-card>
-      <v-card-text class="text-h5">
-        Privacy Policy
-      </v-card-text>
+      <v-card-text class="text-h5"> Privacy Policy </v-card-text>
 
       <v-card-text>
         <v-form>
-          <v-text-field v-model="data.name" placeholder="Nombre del pokemon"/>
-          <v-text-field v-model="data.documentNumber" placeholder="Numero de documento"/>
+          <v-text-field v-model="data.name" placeholder="Nombre del pokemon" />
+          <v-text-field
+            v-model="data.documentNumber"
+            placeholder="Numero de documento"
+          />
+          <v-select
+            label="Select"
+            :items="[
+              'California',
+              'Colorado',
+              'Florida',
+              'Georgia',
+              'Texas',
+              'Wyoming',
+            ]"
+          ></v-select>
           <v-divider />
           <v-btn block color="success" @click="register">Registrar</v-btn>
         </v-form>
@@ -25,19 +37,31 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-const emit = defineEmits(['registered'])
+const emit = defineEmits(["registered"]);
 import { registerPokemon } from "@/services/CivilizedPokemonApi";
 import CivilizedPokemon from "@/models/CivilizedPokemon";
 
 const dialog = ref(false);
 const data = ref({
   name: "",
-  documentNumber: ""
+  documentNumber: "",
 });
 
 const register = async () => {
   dialog.value = false;
-  await registerPokemon(new CivilizedPokemon(data.value.name, data.value.documentNumber, "1231", "pokepass", "xd"))
-  emit("registered",true);
-}
+  await registerPokemon(
+    new CivilizedPokemon(
+      data.value.name,
+      data.value.documentNumber,
+      "1231",
+      "pokepass",
+      "xd"
+    )
+  );
+  data.value = {
+    name: "",
+    documentNumber: "",
+  };
+  emit("registered", true);
+};
 </script>
