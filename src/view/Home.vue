@@ -6,6 +6,6 @@
 </template>
 
 <script lang="ts" setup>
-import About from "@/components/About.vue";
-import TableCrud from "@/components/TableCrud.vue";
+import About from "@/components/common/About.vue";
+import TableCrud from "@/components/pokemon/TableCrud.vue";
 </script>
