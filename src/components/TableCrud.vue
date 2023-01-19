@@ -34,6 +34,8 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { registerPokemon } from "@/services/CivilizedPokemonApi";
+import CivilizedPokemon from "@/models/CivilizedPokemon";
 const pokemons = ref([
   {
     uuid: "0eabb7e9-7d12-4649-b5c1-76531b2f94ab",
@@ -53,14 +55,7 @@ const pokemons = ref([
   },
 ]);
 const add = () => {
-  pokemons.value.push({
-    uuid: "6ed5968e-362b-44fc-9fbb-a2ae2172b9b4",
-    name: "Canela",
-    documentNumber: "102255",
-    documentType: "pokeid",
-    speciesPokemon: "XD",
-    typePokemon: "AS",
-  })
+  registerPokemon(new CivilizedPokemon("algo", "De front","1231","pokepass","xd","xd"))
 }
 </script>
 

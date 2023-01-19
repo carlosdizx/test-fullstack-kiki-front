@@ -1,13 +1,13 @@
 export default class CivilizedPokemon {
-  private readonly uuid: string;
-  private readonly name: string;
-  private readonly documentNumber: string;
-  private readonly documentType: string;
-  private readonly speciesPokemon: string;
-  private readonly typePokemon: string;
+  public uuid: string;
+  public readonly name: string;
+  public readonly documentNumber: string;
+  public readonly documentType: string;
+  public readonly speciesPokemon: string;
+  public readonly typePokemon: string;
 
-  constructor(uuid: string, name: string, documentNumber: string, documentType: string, speciesPokemon: string, typePokemon: string) {
-    this.uuid = uuid;
+  constructor(name: string, documentNumber: string, documentType: string, speciesPokemon: string, typePokemon: string) {
+    this.uuid = "";
     this.name = name;
     this.documentNumber = documentNumber;
     this.documentType = documentType;
