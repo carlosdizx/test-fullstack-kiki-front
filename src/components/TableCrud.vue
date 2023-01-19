@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-card-text class="text-right">
+    <v-card-text>
       <v-btn @click="add" icon color="success">
         <v-icon>mdi-plus</v-icon>
       </v-btn>
@@ -9,6 +9,7 @@
       <v-table>
         <thead>
           <tr>
+            <th>UUID</th>
             <th>Name</th>
             <th>Document Number</th>
             <th>Document Type</th>
@@ -18,6 +19,7 @@
         </thead>
         <tbody>
           <tr v-for="item in pokemons" :key="item.uuid">
+            <td>{{ item.uuid }}</td>
             <td>{{ item.name }}</td>
             <td>{{ item.documentNumber }}</td>
             <td>{{ item.documentType }}</td>
@@ -39,8 +41,9 @@ const pokemons = ref([{}]);
 listPokemons().then(r=> {
   pokemons.value = r as CivilizedPokemon[];
 });
-const add = () => {
-  registerPokemon(new CivilizedPokemon("algo", "De front","1231","pokepass","xd","xd"))
+const add = async () => {
+  await registerPokemon(new CivilizedPokemon("algo", "De front", "1231", "pokepass", "xd", "xd"))
+  pokemons.value = await listPokemons();
 }
 </script>
 
