@@ -1,9 +1,7 @@
 <template>
   <v-card>
     <v-card-text>
-      <v-btn @click="add" icon color="success">
-        <v-icon>mdi-plus</v-icon>
-      </v-btn>
+      <FormPoke />
     </v-card-text>
     <v-card-actions>
       <v-table>
@@ -33,6 +31,7 @@
 </template>
 
 <script setup lang="ts">
+import FormPoke from "@/components/pokemon/FormPoke.vue";
 import { ref } from "vue";
 import { listPokemons, registerPokemon } from "@/services/CivilizedPokemonApi";
 import CivilizedPokemon from "@/models/CivilizedPokemon";
