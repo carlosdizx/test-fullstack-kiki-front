@@ -25,6 +25,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+const emit = defineEmits(['registered'])
 import { registerPokemon } from "@/services/CivilizedPokemonApi";
 import CivilizedPokemon from "@/models/CivilizedPokemon";
 
@@ -37,5 +38,6 @@ const data = ref({
 const register = async () => {
   dialog.value = false;
   await registerPokemon(new CivilizedPokemon(data.value.name, data.value.documentNumber, "1231", "pokepass", "xd"))
+  emit("registered",true);
 }
 </script>

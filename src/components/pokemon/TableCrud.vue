@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-text>
-      <FormPoke />
+      <FormPoke @registered="updatedPokemons" />
     </v-card-text>
     <v-card-actions>
       <v-table>
@@ -33,17 +33,15 @@
 <script setup lang="ts">
 import FormPoke from "@/components/pokemon/FormPoke.vue";
 import { ref } from "vue";
-import { listPokemons, registerPokemon } from "@/services/CivilizedPokemonApi";
+import { listPokemons } from "@/services/CivilizedPokemonApi";
 import CivilizedPokemon from "@/models/CivilizedPokemon";
 const pokemons = ref([{}]);
 
-listPokemons().then(r=> {
-  pokemons.value = r as CivilizedPokemon[];
-});
-const add = async () => {
-  await registerPokemon(new CivilizedPokemon("algo", "De front", "1231", "pokepass", "xd", "xd"))
-  pokemons.value = await listPokemons();
+const updatedPokemons = async () => {
+  pokemons.value = await listPokemons() as CivilizedPokemon[];
 }
+
+updatedPokemons().then();
 </script>
 
 <style scoped></style>
