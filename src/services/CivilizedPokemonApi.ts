@@ -21,3 +21,13 @@ export const listPokemons = async():Promise<CivilizedPokemon[]> => {
   const {data} = await civipokeapi.get("pokemon/all");
   return data;
 };
+
+export const listSpecies = async() => {
+  const {data} = await civipokeapi.get("pokemon/all/species")
+  return data;
+}
+
+export const listTypes = async() => {
+  const {data} = await civipokeapi.get("pokemon/all/types")
+  return data;
+}
