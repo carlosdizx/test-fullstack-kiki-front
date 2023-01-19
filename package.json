@@ -2,7 +2,7 @@
   "name": "test-fullstack-kiki",
   "version": "1.0.0",
   "scripts": {
-    "dev": "vite preview --port 6000",
+    "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview"
   },
