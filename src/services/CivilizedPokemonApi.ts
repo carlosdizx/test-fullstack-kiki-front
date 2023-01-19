@@ -31,3 +31,8 @@ export const listTypes = async() => {
   const {data} = await civipokeapi.get("pokemon/all/types")
   return data;
 }
+
+export const listDocumentTypes = async() => {
+  const {data} = await civipokeapi.get("pokemon/all/documentTypes")
+  return data;
+}

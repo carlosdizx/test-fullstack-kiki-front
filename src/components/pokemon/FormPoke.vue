@@ -17,6 +17,11 @@
             placeholder="Numero de documento"
           />
           <v-select
+            label="Seleccione el tipo de documento"
+            :items="itemsDocumentTypes"
+            v-model="data.documentType"
+          />
+          <v-select
             label="Seleccione la especie"
             :items="itemsSpecies"
             v-model="data.species"
@@ -37,22 +42,25 @@
 <script setup lang="ts">
 import { ref } from "vue";
 const emit = defineEmits(["registered"]);
-import { listSpecies, listTypes, registerPokemon } from "@/services/CivilizedPokemonApi";
+import { listDocumentTypes, listSpecies, listTypes, registerPokemon } from "@/services/CivilizedPokemonApi";
 import CivilizedPokemon from "@/models/CivilizedPokemon";
 
 const dialog = ref(false);
 const data = ref({
   name: "",
   documentNumber: "",
-  species: null,
-  type: null,
+  documentType: "",
+  species: "",
+  type: "",
 });
 
 const itemsSpecies = ref([]);
 const itemsTypes = ref([]);
+const itemsDocumentTypes = ref([]);
 
 listSpecies().then(r => itemsSpecies.value = r as []);
 listTypes().then(r => itemsTypes.value = r as []);
+listDocumentTypes().then(r => itemsDocumentTypes.value = r as []);
 
 const register = async () => {
   dialog.value = false;
@@ -60,16 +68,17 @@ const register = async () => {
     new CivilizedPokemon(
       data.value.name,
       data.value.documentNumber,
+      data.value.documentType,
       data.value.species,
       data.value.type,
-      "xd"
     )
   );
   data.value = {
     name: "",
     documentNumber: "",
-    species: null,
-    type: null,
+    documentType: "",
+    species: "",
+    type: "",
   };
   emit("registered", true);
 };
